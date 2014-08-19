@@ -12,6 +12,7 @@ int findMultiplesSum_NLOGN(int* values, int size, int limit) {
     
     } 
   }
+  return 0;
 }
 
 int findMultiplesSum_N(int* values, int size, int limit) {
@@ -37,6 +38,7 @@ int main(int argv, char** argc) {
   test1[0] = 3;
   test2[1] = 5;
   int limit = 100;
-  findMultiplesSum_N(test1, 2, limit); 
+  int sum = findMultiplesSum_N(test1, 2, limit); 
+  cout << "Sum: " << sum << endl; 
   return 0;
 }
