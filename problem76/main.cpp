@@ -16,17 +16,26 @@ void nextIteration(unsigned valueArray[], unsigned initialValue) {
   return; 
 }
 
-unsigned numberOfSummationsRec_Naive(unsigned index, unsigned valueArray[], unsigned initialValue) {
-  unsigned curValue = valueArray[index];
-  unsigned nextValue = valueArray[index+1];
-  unsigned counter = 1;
-  if (curValue == 1) {
+unsigned currentIterationRec_Naive(unsigned index, unsigned valueArray[], unsigned initialValue) {
+  unsigned counter = 0;
+  if (valueArray[index] == 1) { 
     nextIteration(valueArray, initialValue); 
+    return ++counter;
   }
-  if ( curValue == nextValue + 1) {
-    if (index == 0) return counter;
-    return numberOfSummationsRec_Native(index + 1, valueArray,initialValue);
+  else if (valueArray[index] == valueArray[index + 1] + 1) return currentIterationRec_Naive(index + 1, valueArray, initialValue);  
+  else {
+    valueArray[index] -= 1;
+    valueArray[index + 1] += 1;
   }
+  return currentIterationRec_Naive(index, valueArray, initialValue);  
+}
+
+unsigned numberOfSummationsRec_Naive(unsigned index, unsigned valueArray[], unsigned initialValue) {
+  unsigned counter = 0; 
+  while (valueArray[0] > valueArray[1])
+    counter += currentIterationRec_Native(0,valueArray,intiialValue); 
+  }
+  return counter;
 }
 
 unsigned numberOfSummations_Naive(unsigned value) {
@@ -37,10 +46,7 @@ unsigned numberOfSummations_Naive(unsigned value) {
   unsigned  sum_array[0] = value;
   unsigned counter = 0;
   for (unsigned* initial_value = sum_array[0]; initial_value == 1; ) {
-    //for (unsigned 
-  }
-
-  
+  } 
 }
 
 int main(int argv, char** argc) {
