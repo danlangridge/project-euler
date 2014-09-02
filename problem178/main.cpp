@@ -10,8 +10,27 @@ using namespace std;
 struct bigNum {
   char digit[100];
 
+ 
+  digitAdd(bigNum one, bigNum& two, unsigned digit) {
+   char addition = one[digit] + two[digit];
+   if (addition > 9) {
+     addition = addition - 9;    
+   }
+  }
+  
   //TODO: Implement operators
-}
+  bigNum operator+(const bigNum& otherNum) {
+    bigNum createdNum;
+    for (unsigned i = 0; i < 100; i++) {
+      createdNum[i] = digitAdd(digit[i],otherNum.digit[i]);
+    
+    }
+    return createdNum;
+  }  
+  bigNum operator++() {
+    bigNum
+  }
+};
 
 long numberOfStepNumbers(bigNum bound) {
   long count = 0;
