@@ -7,10 +7,28 @@
 
 using namespace std;
 
+
+int nextPrime_improved(int n) {
+  bool isPrime = true; 
+  for (unsigned i = n^2; i > -1; i++) {
+    for (unsigned j = 0; j < i; j++) {
+      if (i % j == 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) return i; 
+    isPrime = true; 
+  }
+
+  return 0;
+}
+
+
 int nextPrime_naive(int n) {
   bool isPrime = true; 
   for (unsigned i = n; i > -1; i++) {
-    for (unsigned j = 0; j < n; j++) {
+    for (unsigned j = 0; j < i; j++) {
       if (i % j == 0) {
         isPrime = false;
         break;
