@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
+#include <time.h>
 
 using namespace std;
 
@@ -16,9 +17,12 @@ bool guaranteedPrimeTest_Improved(int i) {
   return true;
 }
 
-bool probabilisticPrimeTest(int i) {
-
-  return false;
+bool probabilisticPrimeTest(int i, int conviction) {
+  srand(time(NULL));
+  for (unsigned a = rand() % i; conviction > 0; conviction--) {
+    if ((a^(i-1)) % i != 1) return false;
+  }
+  return true;
 }
 
 
