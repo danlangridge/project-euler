@@ -37,11 +37,25 @@ string primeSequence() {
   int firstPrime = findFirstPrime(1000);
   int currentNumber = 0;
   int difference = 0;
-
-  for (unsigned j = firstPrime +1; j  
-  for (unsigned i = firstPrime + 1;i < min*10; i++) {
-    if (probabilisticPrimeTest(i,100))  
-  } 
+  int currentPrime = firstPrime;
+  int nextPrime = 0;
+  int difference = 0;
+  
+  while (currentPrime) {
+    for (unsigned i = currentPrime + 1;i < min*10; i++) {
+      if (probabilisticPrimeTest(i,100)) {
+        nextPrime = i;
+        difference = currentPrime - nextPrime; 
+        if (probabilisticPrimeTest(nextPrime+difference, 100)) break; 
+      } 
+    }
+    if (probabilisticPrimeTest(nextPrime+difference, 100)) break; 
+    currentPrime = nextPrime; 
+  }
+  stringstream ss << (nextPrime + difference);
+  ss << nextPrime; 
+  ss << currentPrime;
+  return ss; 
 }
 
 int main(int argv, char** argc) { 
