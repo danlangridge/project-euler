@@ -7,6 +7,14 @@
 
 using namespace std;
 
+bool probabilisticPrimeTest(int i, int conviction) {
+  srand(time(NULL));
+  for (unsigned a = rand() % i; conviction > 0; conviction--) {
+    if ((a^(i-1)) % i != 1) return false;
+  }
+  return true;
+}
+
 int factorialSum(int number) {
   int sum = 0;
   for (unsigned i = 1; i <= number; i++) {
