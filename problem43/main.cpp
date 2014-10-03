@@ -8,6 +8,16 @@
 
 using namespace std;
 
+return permutation(string prefix, string str) {
+  int n = str.length();
+  if (n == 0) return prefix;
+  else {
+    for (unsigned i = 0; i < n; i++) {
+      return permutation(prefix + str[i], str.substr(0,i) + str.substr(i+1,n));
+    }
+  }
+}
+
 string nextPermutation() {
   return "123456789";
 }
