@@ -36,7 +36,8 @@ int sequence(int n, int limit) {
     if ( guaranteedPrimeTest_Improved(i) {
       int sum = digitSum;
       for (unsigned j = 0; sum^j < i + 1; j++) {
-        if (sum^j ==  
+        if (sum^j == i) a++;
+        if (a == n -1) return i; 
       } 
     }
   } 
@@ -46,5 +47,6 @@ int sequence(int n, int limit) {
 
 
 int main(int argv, char** argc) { 
+  cout << squence(5, 1000); 
   return 0;
 }
